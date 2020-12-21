@@ -1,0 +1,87 @@
+@start
+    *say
+        Welcome to the jungle
+    *then
+        -> startGame
+@startGame
+    *say
+        Say yes to continue or no to end.
+    *then
+        hear yes{
+            -> enterJungle
+        }
+        hear no{
+            -> endGame
+        }
+        
+@enterJungle
+    *say
+        Choose left or right.
+    *then
+        set playerHealth as 50
+        hear left{
+        set opponentHealth as 20
+            -> left
+        }
+        hear right{
+        set opponentHealth as 30
+            -> right
+        }
+
+@right
+    *say
+        Lion!
+    *then
+        <-> fightLion
+        -> update
+
+@dead
+    *say
+        You're dead!
+    *then
+         -> endGame
+@fightLion
+        roll1d2
+        if rollResult == 1{
+            decrease playerHealth by 10
+        }
+        if rollResult != 1{
+            decrease opponentHealth by 10
+        }
+        >>RETURN
+@update
+    *say
+        Your health is { playerHealth } and opponent health is { opponentHealth }.
+    *then
+        if playerHealth <= 0 {
+            -> dead
+        }
+        if opponentHealth <= 0 {
+            -> endGame
+        }
+        if playerHealth > 0 and opponentHealth > 0{
+            -> right
+        }
+@left
+    *say
+        Tiger!
+    *then
+        if playerHealth > 0 || opponentHealth > 0 {
+            <-> fightTiger
+            -> left
+        }
+        else{
+            -> dead
+        }
+@fightTiger
+    roll1d2
+        if rollResult == 1{
+            decrease playerHealth by 10
+        }
+        else{
+            decrease opponentHealth by 10
+        }
+        >>RETURN        
+@endGame
+    *say
+        Bye!

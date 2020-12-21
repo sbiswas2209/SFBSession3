@@ -1,0 +1,18 @@
+{
+    "en-US": {
+        "translation": {
+            "start.narration": "Welcome to the jungle",
+            "startGame.narration": "Say yes to continue or no to end.",
+            "utterance-yes": "yes",
+            "utterance-no": "no",
+            "enterJungle.narration": "Choose left or right.",
+            "utterance-left": "left",
+            "utterance-right": "right",
+            "right.narration": "Lion!",
+            "dead.narration": "You're dead!",
+            "update.narration": "Your health is { playerHealth } and opponent health is { opponentHealth }.",
+            "left.narration": "Tiger!",
+            "endGame.narration": "Bye!"
+        }
+    }
+}
